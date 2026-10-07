@@ -1,0 +1,1062 @@
+/* ==========================================================================
+   ESCALAPRO BCMS - DESIGN SYSTEM & TOKENS DE ENGENHARIA UI/UX
+   Doutrina Militar: Batalhão Central de Manutenção e Suprimento
+   ========================================================================== */
+
+:root {
+  /* --- Cores Primitivas Neutras (Slate Escuro Balanceado) --- */
+  --neutral-0:    hsl(0, 0%, 100%);
+  --neutral-50:   hsl(215, 28%, 97%);
+  --neutral-100:  hsl(215, 20%, 93%);
+  --neutral-200:  hsl(215, 16%, 86%);
+  --neutral-300:  hsl(215, 14%, 74%);
+  --neutral-400:  hsl(215, 12%, 58%);
+  --neutral-500:  hsl(215, 14%, 42%);
+  --neutral-600:  hsl(215, 20%, 28%);
+  --neutral-700:  hsl(215, 26%, 18%);
+  --neutral-800:  hsl(215, 30%, 12%);
+  --neutral-900:  hsl(215, 35%, 8%);
+  --neutral-950:  hsl(215, 40%, 4%);
+
+  /* --- Cores de Identidade Militar (Verde-Oliva Tático & Esmeralda) --- */
+  --olive-50:   hsl(145, 30%, 96%);
+  --olive-100:  hsl(145, 35%, 90%);
+  --olive-500:  hsl(145, 45%, 35%);
+  --olive-600:  hsl(145, 50%, 24%);
+  --olive-700:  hsl(145, 55%, 16%);
+  --olive-800:  hsl(145, 60%, 10%);
+
+  --emerald-main: hsl(155, 75%, 42%);
+  --emerald-glow: hsla(155, 75%, 42%, 0.15);
+
+  /* --- Escala Vermelha (Sáb/Dom/Feriado) --- */
+  --red-scale-bg:     hsl(356, 85%, 97%);
+  --red-scale-border: hsl(356, 75%, 85%);
+  --red-scale-text:   hsl(356, 80%, 30%);
+  --red-scale-badge:  hsl(356, 85%, 45%);
+
+  /* --- Troca a Caneta (Azul Caneta Tático) --- */
+  --pen-blue-bg:     hsl(218, 90%, 96%);
+  --pen-blue-border: hsl(218, 80%, 82%);
+  --pen-blue-text:   hsl(218, 85%, 30%);
+  --pen-blue-badge:  hsl(218, 90%, 45%);
+
+  /* --- Superfícies e Textos (Tema Escuro Padrão Profissional) --- */
+  --bg-canvas:   var(--neutral-950);
+  --bg-surface:  var(--neutral-900);
+  --bg-surface-2:var(--neutral-800);
+  --bg-card:     hsla(215, 30%, 12%, 0.85);
+
+  --text-primary:   var(--neutral-50);
+  --text-secondary: var(--neutral-300);
+  --text-muted:     var(--neutral-400);
+
+  --border-subtle:  var(--neutral-800);
+  --border-strong:  var(--neutral-700);
+
+  /* --- Tipografia e Sombras --- */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Consolas', monospace;
+
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -4px rgba(0, 0, 0, 0.5);
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-full: 9999px;
+
+  --transition-fast: 150ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 250ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* --- Tema Claro Opcional --- */
+[data-theme="light"] {
+  --bg-canvas:   var(--neutral-50);
+  --bg-surface:  var(--neutral-0);
+  --bg-surface-2:var(--neutral-100);
+  --bg-card:     var(--neutral-0);
+
+  --text-primary:   var(--neutral-900);
+  --text-secondary: var(--neutral-600);
+  --text-muted:     var(--neutral-500);
+
+  --border-subtle:  var(--neutral-200);
+  --border-strong:  var(--neutral-300);
+
+  --red-scale-bg:     hsl(356, 85%, 97%);
+  --red-scale-border: hsl(356, 75%, 85%);
+  --red-scale-text:   hsl(356, 80%, 25%);
+
+  --pen-blue-bg:     hsl(218, 90%, 96%);
+  --pen-blue-border: hsl(218, 80%, 82%);
+  --pen-blue-text:   hsl(218, 85%, 25%);
+}
+
+/* ==========================================================================
+   RESET & REGRAS GERAIS
+   ========================================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-canvas);
+  color: var(--text-primary);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ==========================================================================
+   HEADER MILITAR COM BRASÃO
+   ========================================================================== */
+.top-header {
+  background: linear-gradient(180deg, var(--neutral-900) 0%, var(--neutral-950) 100%);
+  border-bottom: 1px solid var(--border-strong);
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.brand-section {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.brand-logo {
+  width: 48px;
+  height: 48px;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4));
+  flex-shrink: 0;
+}
+
+.brand-title h1 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.brand-badge {
+  background: var(--olive-700);
+  color: var(--olive-100);
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--olive-500);
+  text-transform: uppercase;
+}
+
+.brand-sub {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* ==========================================================================
+   NAVEGAÇÃO POR ABAS (TABS)
+   ========================================================================== */
+.nav-tabs {
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 0 1.5rem;
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+}
+
+.tab-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 0.9rem 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-bottom: 2px solid transparent;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.tab-btn:hover {
+  color: var(--text-primary);
+}
+
+.tab-btn.active {
+  color: var(--emerald-main);
+  border-bottom-color: var(--emerald-main);
+}
+
+/* ==========================================================================
+   CONTAINER PRINCIPAL
+   ========================================================================== */
+.main-content {
+  flex: 1;
+  padding: 1.5rem;
+  max-width: 1440px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.tab-panel {
+  display: none;
+  animation: fadeIn var(--transition-normal);
+}
+
+.tab-panel.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================================================
+   CARDS DE MÉTRICAS (KPIs)
+   ========================================================================== */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.kpi-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-fast), border-color var(--transition-fast);
+}
+
+.kpi-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-strong);
+}
+
+.kpi-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-surface-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+.kpi-info h4 {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.kpi-value {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.2;
+}
+
+/* ==========================================================================
+   BARRA DE CONTROLE DA SEMANA
+   ========================================================================== */
+.week-control-bar {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.week-selector-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.week-badge-btn {
+  background: var(--bg-surface-2);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 0.45rem 0.85rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.week-badge-btn:hover {
+  background: var(--neutral-700);
+  color: var(--text-primary);
+}
+
+.week-badge-btn.active {
+  background: var(--olive-600);
+  border-color: var(--emerald-main);
+  color: var(--neutral-0);
+  box-shadow: 0 0 10px var(--emerald-glow);
+}
+
+.week-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* ==========================================================================
+   QUADRO SEMANAL MILITAR (ESPELHO BCMS)
+   ========================================================================== */
+.schedule-sheet {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  margin-bottom: 2rem;
+}
+
+.sheet-header {
+  background: var(--neutral-900);
+  border-bottom: 2px solid var(--neutral-700);
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sheet-title h2 {
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+}
+
+.sheet-title p {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.schedule-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(140px, 1fr));
+  border-collapse: collapse;
+}
+
+/* Colunas Diárias */
+.day-column {
+  border-right: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+}
+
+.day-column:last-child {
+  border-right: none;
+}
+
+/* Cabeçalho do Dia */
+.day-header {
+  background: var(--bg-surface-2);
+  padding: 0.85rem 0.5rem;
+  text-align: center;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.day-name {
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.day-date {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+/* Coluna de Escala Vermelha */
+.day-column.is-red {
+  background: rgba(239, 68, 68, 0.03);
+}
+
+.day-column.is-red .day-header {
+  background: rgba(239, 68, 68, 0.12);
+  border-bottom: 2px solid rgba(239, 68, 68, 0.4);
+}
+
+.day-column.is-red .day-name {
+  color: #F87171;
+}
+
+.red-scale-tag {
+  display: inline-block;
+  background: #EF4444;
+  color: #FFFFFF;
+  font-size: 0.62rem;
+  font-weight: 800;
+  padding: 1px 6px;
+  border-radius: var(--radius-full);
+  margin-top: 3px;
+  text-transform: uppercase;
+}
+
+/* Célula do Militar Escalado */
+.duty-slot {
+  padding: 1.25rem 0.75rem;
+  min-height: 140px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  transition: background var(--transition-fast);
+}
+
+.duty-slot:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.rank-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.military-name {
+  font-size: 0.98rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 2px 0 6px 0;
+  letter-spacing: -0.01em;
+}
+
+/* Troca a Caneta */
+.duty-slot.has-swap .military-name.struck {
+  text-decoration: line-through;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  opacity: 0.75;
+}
+
+.pen-swap-badge {
+  background: rgba(59, 130, 246, 0.15);
+  border: 1px dashed #3B82F6;
+  border-radius: var(--radius-sm);
+  padding: 0.4rem 0.6rem;
+  margin-top: 4px;
+}
+
+.pen-swap-badge .pen-label {
+  font-size: 0.65rem;
+  font-weight: 800;
+  color: #60A5FA;
+  text-transform: uppercase;
+  display: block;
+}
+
+.pen-swap-badge .pen-name {
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: #93C5FD;
+}
+
+/* Botão de Troca Rápida */
+.slot-action-btn {
+  margin-top: 8px;
+  background: transparent;
+  border: 1px solid var(--border-subtle);
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.slot-action-btn:hover {
+  background: var(--bg-surface-2);
+  border-color: var(--text-secondary);
+  color: var(--text-primary);
+}
+
+/* Linha de Rodapé da Escala (Feriados / Legenda) */
+.day-footer {
+  padding: 0.65rem 0.5rem;
+  border-top: 1px solid var(--border-subtle);
+  background: var(--bg-surface);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  text-align: center;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ==========================================================================
+   TABELAS DE DADOS (FOLGAS & PERMUTAS)
+   ========================================================================== */
+.table-container {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  overflow-x: auto;
+  box-shadow: var(--shadow-md);
+  margin-bottom: 2rem;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+  text-align: left;
+}
+
+.data-table th {
+  background: var(--neutral-900);
+  color: var(--text-secondary);
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.85rem 1.1rem;
+  border-bottom: 1px solid var(--border-strong);
+}
+
+.data-table td {
+  padding: 0.85rem 1.1rem;
+  border-bottom: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+}
+
+.data-table tbody tr:hover {
+  background: var(--bg-surface-2);
+}
+
+/* Folgômetro e Indicadores */
+.rest-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 700;
+  font-size: 0.82rem;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+}
+
+.rest-badge.green {
+  background: rgba(16, 185, 129, 0.15);
+  color: #34D399;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.rest-badge.amber {
+  background: rgba(245, 158, 11, 0.15);
+  color: #FBBF24;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.rest-badge.red {
+  background: rgba(239, 68, 68, 0.15);
+  color: #F87171;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+/* ==========================================================================
+   BOTÕES & FORMULÁRIOS
+   ========================================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 0.6rem 1.1rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: var(--emerald-main);
+  color: var(--neutral-950);
+}
+
+.btn-primary:hover {
+  background: hsl(155, 75%, 48%);
+  box-shadow: 0 0 12px var(--emerald-glow);
+}
+
+.btn-secondary {
+  background: var(--bg-surface-2);
+  border-color: var(--border-strong);
+  color: var(--text-primary);
+}
+
+.btn-secondary:hover {
+  background: var(--neutral-700);
+}
+
+.btn-outline-danger {
+  background: transparent;
+  border-color: #EF4444;
+  color: #F87171;
+}
+
+.btn-outline-danger:hover {
+  background: rgba(239, 68, 68, 0.1);
+}
+
+/* ==========================================================================
+   MODAIS (DIALOG)
+   ========================================================================== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+.modal-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  width: 100%;
+  max-width: 520px;
+  box-shadow: var(--shadow-lg);
+  animation: scaleIn var(--transition-normal);
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.modal-header {
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modal-header h3 {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.modal-close-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.25rem;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.modal-body {
+  padding: 1.5rem;
+}
+
+.modal-footer {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  background: var(--bg-surface-2);
+}
+
+.form-group {
+  margin-bottom: 1.15rem;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  margin-bottom: 0.4rem;
+  text-transform: uppercase;
+}
+
+.form-control {
+  width: 100%;
+  background: var(--bg-canvas);
+  border: 1px solid var(--border-strong);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  padding: 0.65rem 0.85rem;
+  border-radius: var(--radius-sm);
+  outline: none;
+  transition: border-color var(--transition-fast);
+}
+
+.form-control:focus {
+  border-color: var(--emerald-main);
+  box-shadow: 0 0 0 2px var(--emerald-glow);
+}
+
+.info-alert {
+  background: rgba(59, 130, 246, 0.1);
+  border-left: 3px solid #3B82F6;
+  padding: 0.75rem 1rem;
+  font-size: 0.82rem;
+  color: #93C5FD;
+  border-radius: var(--radius-sm);
+  margin-bottom: 1rem;
+  line-height: 1.4;
+}
+
+/* ==========================================================================
+   ESTILOS PARA IMPRESSÃO (A4 PAISAGEM BCMS)
+   ========================================================================== */
+@media print {
+  body {
+    background: #FFFFFF !important;
+    color: #000000 !important;
+    font-size: 9pt;
+  }
+
+  .top-header,
+  .nav-tabs,
+  .kpi-grid,
+  .week-control-bar,
+  .week-actions,
+  .slot-action-btn,
+  .modal-overlay,
+  footer {
+    display: none !important;
+  }
+
+  .main-content {
+    padding: 0 !important;
+    max-width: 100% !important;
+  }
+
+  .schedule-sheet {
+    border: 1.5pt solid #000000 !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+  }
+
+  .sheet-header {
+    background: #F1F5F9 !important;
+    color: #000000 !important;
+    border-bottom: 1.5pt solid #000000 !important;
+    padding: 8pt !important;
+  }
+
+  .sheet-title h2, .sheet-title p {
+    color: #000000 !important;
+  }
+
+  .day-column {
+    border-right: 1pt solid #000000 !important;
+  }
+
+  .day-header {
+    background: #E2E8F0 !important;
+    color: #000000 !important;
+    border-bottom: 1pt solid #000000 !important;
+  }
+
+  .day-column.is-red {
+    background: #F8FAFC !important;
+  }
+
+  .day-column.is-red .day-header {
+    background: #CBD5E1 !important;
+  }
+
+  .day-column.is-red .day-name {
+    color: #000000 !important;
+    font-weight: 800 !important;
+  }
+
+  .red-scale-tag {
+    border: 1pt solid #000000 !important;
+    background: #E2E8F0 !important;
+    color: #000000 !important;
+  }
+
+  .duty-slot {
+    min-height: 90pt !important;
+  }
+
+  .military-name {
+    color: #000000 !important;
+  }
+
+  .pen-swap-badge {
+    border: 1pt dashed #000000 !important;
+    background: transparent !important;
+  }
+
+  .pen-swap-badge .pen-label,
+  .pen-swap-badge .pen-name {
+    color: #000000 !important;
+  }
+}
+
+
+/* ==========================================================================
+   OCR VISÃO COMPUTACIONAL & RECONHECIMENTO DE FOTOS
+   ========================================================================== */
+.ocr-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.ocr-upload-card {
+  background: var(--bg-surface);
+  border: 2px dashed var(--border-strong);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  transition: all var(--transition-normal);
+  cursor: pointer;
+  position: relative;
+}
+
+.ocr-upload-card:hover, .ocr-upload-card.drag-over {
+  border-color: #38BDF8;
+  background: hsla(215, 30%, 15%, 0.95);
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.15);
+}
+
+.ocr-upload-icon {
+  font-size: 3rem;
+  margin-bottom: 0.75rem;
+  display: inline-block;
+  animation: floatIcon 3s ease-in-out infinite;
+}
+
+@keyframes floatIcon {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.ocr-preview-image {
+  max-width: 100%;
+  max-height: 320px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-strong);
+  margin-top: 1rem;
+  box-shadow: var(--shadow-md);
+  object-fit: contain;
+}
+
+.ocr-results-box {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+}
+
+.ocr-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.ocr-meta-item {
+  background: var(--bg-surface-2);
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-sm);
+  border-left: 3px solid #38BDF8;
+}
+
+.ocr-meta-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.ocr-meta-val {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-top: 0.2rem;
+}
+
+/* ==========================================================================
+   REORDENAÇÃO DE ANTIGUIDADE (DRAG & DROP)
+   ========================================================================== */
+.drag-handle {
+  cursor: grab;
+  cursor: -webkit-grab;
+  user-select: none;
+  font-size: 1.25rem;
+  color: var(--text-muted);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+
+.drag-handle:hover {
+  color: #38BDF8;
+  background: rgba(56, 189, 248, 0.15);
+  transform: scale(1.15);
+}
+
+.drag-handle:active {
+  cursor: grabbing;
+  cursor: -webkit-grabbing;
+}
+
+tr.draggable-row {
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
+}
+
+tr.draggable-row.is-dragging {
+  opacity: 0.35;
+  background: rgba(56, 189, 248, 0.15) !important;
+  outline: 2px dashed #38BDF8;
+}
+
+tr.draggable-row.drop-target-above {
+  border-top: 3px solid #10B981 !important;
+  box-shadow: 0 -4px 8px -2px rgba(16, 185, 129, 0.4);
+}
+
+tr.draggable-row.drop-target-below {
+  border-bottom: 3px solid #10B981 !important;
+  box-shadow: 0 4px 8px -2px rgba(16, 185, 129, 0.4);
+}
+
+.antiguidade-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 34px;
+  height: 24px;
+  padding: 0 6px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-surface-2);
+  border: 1px solid var(--border-subtle);
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+}
+
+.antiguidade-badge.primeiro {
+  background: linear-gradient(135deg, #F59E0B, #D97706);
+  color: #FFF;
+  border-color: #F59E0B;
+  box-shadow: 0 0 8px rgba(245, 158, 11, 0.4);
+}
+
+.antiguidade-badge.top3 {
+  background: rgba(56, 189, 248, 0.2);
+  color: #38BDF8;
+  border-color: #38BDF8;
+}
+
+.btn-nudge {
+  background: var(--bg-surface-2);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-muted);
+  width: 26px;
+  height: 26px;
+  border-radius: var(--radius-sm);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.72rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-nudge:hover:not(:disabled) {
+  color: #38BDF8;
+  border-color: #38BDF8;
+  background: rgba(56, 189, 248, 0.1);
+  transform: translateY(-1px);
+}
+
+.btn-nudge:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.reorder-actions-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 0.85rem 1.25rem;
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  margin-bottom: 1rem;
+}
+
+

@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EscalaPro BCMS | Sistema de Previsão e Controle de Escalas de Serviço</title>
+  <link rel="stylesheet" href="/static/css/app.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    /* Toast e Notificações Rápidas */
+    .toast-notification {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: var(--neutral-800);
+      color: var(--text-primary);
+      border: 1px solid var(--border-strong);
+      padding: 0.85rem 1.4rem;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-lg);
+      font-size: 0.88rem;
+      font-weight: 600;
+      z-index: 2000;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: all var(--transition-normal);
+      pointer-events: none;
+    }
+    .toast-notification.active {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+    .toast-notification.success { border-color: #10B981; background: #064E3B; color: #ECFDF5; }
+    .toast-notification.warning { border-color: #F59E0B; background: #78350F; color: #FEF3C7; }
+    .toast-notification.danger  { border-color: #EF4444; background: #7F1D1D; color: #FEE2E2; }
+
+    /* Loader */
+    .loader-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(2px);
+      z-index: 999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: #10B981;
+      font-size: 1.1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Bar / Header Militar -->
+  <header class="top-header">
+    <div class="brand-section">
+      <img src="/static/brasao.svg" alt="Brasão do Exército" class="brand-logo">
+      <div class="brand-title">
+        <h1>
+          EscalaPro BCMS
+          <span class="brand-badge">UASG 160329</span>
+        </h1>
+        <div class="brand-sub">Batalhão Central de Manutenção e Suprimento &bull; Base de Apoio Logístico do Exército</div>
+      </div>
+    </div>
+
+    <div class="header-actions">
+      <button class="btn btn-primary" onclick="abrirModalPrevisao()" title="Calcular previsão automática para nova semana">
+        ⚡ Gerar Previsão Semanal
+      </button>
+      <button class="btn btn-secondary" onclick="baixarExcel()" title="Exportar semana atual para Excel (.xlsx)">
+        📊 Excel (.xlsx)
+      </button>
+      <button class="btn btn-secondary" onclick="baixarPngPrevisao()" title="Baixar Previsão em imagem PNG de alta definição visual" style="border-color: #38BDF8; color: #38BDF8;">
+        📸 Baixar Previsão (PNG)
+      </button>
+      <button class="btn btn-primary" onclick="abrirAbaFoto()" style="background: linear-gradient(135deg, #E11D48, #BE123C); border: none;" title="Digitalizar foto de escala impressa">
+        📷 Reconhecer Foto
+      </button>
+      <a href="/sargenteante" class="btn btn-secondary" style="border-color: #F59E0B; color: #FBBF24; text-decoration: none; display: inline-flex; align-items: center; gap: 0.35rem;" title="Acessar o portal focado da Sargenteação">
+        👔 Visão Sargenteante
+      </a>
+      <button id="btn-theme-toggle" class="btn btn-secondary" style="padding: 0.6rem 0.8rem;" title="Alternar Modo Escuro / Claro">
+        ☀️
+      </button>
+    </div>
+  </header>
+
+  <!-- Navegação por Abas -->
+  <nav class="nav-tabs" role="tablist">
+    <button class="tab-btn active" data-tab="tab-escala" role="tab">
+      📅 Quadro Semanal (Espelho BCMS)
+    </button>
+    <button class="tab-btn" data-tab="tab-folgas" role="tab">
+      ⏳ Folgômetro & Efetivo (Preta / Vermelha)
+    </button>
+    <button class="tab-btn" data-tab="tab-permutas" role="tab">
+      🖋️ Extrato de Permutas (Trocas a Caneta)
+    </button>
+    <button class="tab-btn" data-tab="tab-afastamentos" role="tab">
+      🏖️ Férias & Afastamentos
+    </button>
+    <button class="tab-btn" data-tab="tab-foto" role="tab" style="color: #FB7185;">
+      📷 Reconhecer Foto & Folgas (IA)
+    </button>
+  </nav>
+
+  <!-- Conteúdo Principal -->
+  <main class="main-content">
+
+    <!-- Cards de Métricas (KPIs) -->
+    <section class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-icon" style="background: rgba(16, 185, 129, 0.15); color: #34D399;">🎖️</div>
+        <div class="kpi-info">
+          <h4>Efetivo Ativo</h4>
+          <div class="kpi-value" id="kpi-efetivo">--</div>
+        </div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-icon" style="background: rgba(59, 130, 246, 0.15); color: #60A5FA;">📋</div>
+        <div class="kpi-info">
+          <h4>Serviços Registrados</h4>
+          <div class="kpi-value" id="kpi-escalas">--</div>
+        </div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-icon" style="background: rgba(245, 158, 11, 0.15); color: #FBBF24;">🖋️</div>
+        <div class="kpi-info">
+          <h4>Permutas (Caneta)</h4>
+          <div class="kpi-value" id="kpi-permutas">--</div>
+        </div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-icon" style="background: rgba(239, 68, 68, 0.15); color: #F87171;">🏥</div>
+        <div class="kpi-info">
+          <h4>Afastados Hoje</h4>
+          <div class="kpi-value" id="kpi-afastados">--</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABA 1: QUADRO SEMANAL (ESPELHO BCMS) -->
+    <div id="tab-escala" class="tab-panel active">
+
+      <!-- Barra de Controle de Semanas -->
+      <div class="week-control-bar">
+        <div style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
+          <span style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">
+            Semanas Cadastradas:
+          </span>
+          <div class="week-selector-group" id="week-buttons-container">
+            <!-- Botões dinâmicos das semanas (37, 38, 39, 40, 41...) -->
+          </div>
+        </div>
+
+        <div class="week-actions">
+          <span style="font-size: 0.82rem; color: var(--text-muted);">
+            Posto Foco: <strong>3º Sargento de Dia</strong>
+          </span>
+        </div>
+      </div>
+
+      <!-- Quadro no Layout Idêntico à Folha Impressa do BCMS -->
+      <div class="schedule-sheet">
+        <div class="sheet-header">
+          <div class="sheet-title">
+            <h2 id="sheet-title-text">PREVISÃO DA ESCALA DE SERVIÇO</h2>
+            <p id="sheet-period-text">Carregando dados da semana...</p>
+          </div>
+          <div>
+            <span class="brand-badge" style="background: var(--neutral-800); border-color: var(--neutral-600);">
+              BCMS &bull; SERVIÇO INTERNO
+            </span>
+          </div>
+        </div>
+
+        <!-- Grade de 7 Colunas (Quinta a Quarta) -->
+        <div class="schedule-grid" id="schedule-grid-container">
+          <!-- Renderizado via JavaScript -->
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ABA 2: FOLGÔMETRO & RANKING DO EFETIVO -->
+    <div id="tab-folgas" class="tab-panel">
+      <div class="sheet-title" style="margin-bottom: 1.25rem;">
+        <h2>Quadro Geral de Folgas e Prontidão do Efetivo</h2>
+        <p>A contagem oficial de folga considera estritamente os serviços impressos. Trocas a caneta não alteram o rodízio.</p>
+      </div>
+
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Antig.</th>
+              <th>Militar (3º Sgt)</th>
+              <th>Folga Escala Preta (Úteis)</th>
+              <th>Folga Escala Vermelha (Sáb/Dom/Fer)</th>
+              <th>Saldo de Permutas</th>
+              <th>Status Operacional</th>
+            </tr>
+          </thead>
+          <tbody id="tbody-folgas">
+            <!-- Linhas dinâmicas de militares -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ABA 3: EXTRATO DE PERMUTAS (CANETA) -->
+    <div id="tab-permutas" class="tab-panel">
+      <div class="sheet-title" style="margin-bottom: 1.25rem;">
+        <h2>Extrato Histórico de Permutas (Trocas a Caneta)</h2>
+        <p>Auditoria de quem cobriu o serviço no livro de quarto de hora sem perder o cômputo da folga na fila oficial.</p>
+      </div>
+
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Data do Serviço</th>
+              <th>Semana / Dia</th>
+              <th>Escala</th>
+              <th>Titular Oficial (Impresso)</th>
+              <th>Substituto Físico (Caneta)</th>
+              <th>Motivo Registrado</th>
+              <th>Autorizado Por</th>
+            </tr>
+          </thead>
+          <tbody id="tbody-permutas">
+            <!-- Linhas de permutas -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ABA 4: FÉRIAS E AFASTAMENTOS -->
+    <div id="tab-afastamentos" class="tab-panel">
+      <div class="sheet-title" style="margin-bottom: 1.25rem;">
+        <h2>Afastamentos, Férias e Dispensas Médicas</h2>
+        <p>Militares com afastamento cadastrado são automaticamente desconsiderados pelo motor preditivo de escalas.</p>
+      </div>
+
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Militar</th>
+              <th>Motivo do Afastamento</th>
+              <th>Data Início</th>
+              <th>Data Término</th>
+              <th>Observação</th>
+            </tr>
+          </thead>
+          <tbody id="tbody-afastamentos">
+            <!-- Linhas de afastamentos -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ABA 5: RECONHECER FOTO DA ESCALA (OCR VISION) -->
+    <div id="tab-foto" class="tab-panel">
+      <div class="sheet-title" style="margin-bottom: 1.25rem;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem;">
+          <div>
+            <h2>Reconhecimento de Foto da Escala & Atualização de Folgas</h2>
+            <p>Envie a fotografia da folha de serviço oficial impressa (com ou sem anotações a caneta). A IA Multimodal (Gemini Vision) identifica a semana, datas, militares titulares e substitutos nas rasuras, recalculando automaticamente as folgas do efetivo.</p>
+          </div>
+          <div class="badge-tag" style="background: rgba(244, 63, 94, 0.15); color: #FB7185; border: 1px solid #F43F5E;">
+            ✨ Gemini Vision Multimodal
+          </div>
+        </div>
+      </div>
+
+      <div class="ocr-container">
+        <!-- Card de Upload / Dropzone -->
+        <div class="ocr-upload-card" id="ocr-dropzone" onclick="document.getElementById('input-foto-escala').click()">
+          <input type="file" id="input-foto-escala" accept="image/*" style="display: none;" onchange="aoSelecionarFoto(event)">
+          <div class="ocr-upload-icon">📷</div>
+          <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.4rem;">
+            Clique aqui ou arraste a foto da escala
+          </h3>
+          <p style="font-size: 0.85rem; color: var(--text-muted); max-width: 480px; margin: 0 auto;">
+            Formatos suportados: JPEG, PNG, WEBP. Fotos de celular tiradas da prancheta ou mural oficial são reconhecidas com precisão milimétrica.
+          </p>
+          
+          <!-- Preview da Imagem Selecionada -->
+          <div id="ocr-preview-container" style="display: none; margin-top: 1.25rem;" onclick="event.stopPropagation()">
+            <img id="ocr-img-thumb" class="ocr-preview-image" src="" alt="Foto da Escala">
+            <div style="margin-top: 1rem; display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap;">
+              <button class="btn btn-secondary" onclick="limparFotoSelecionada()">❌ Trocar Foto</button>
+              <button class="btn btn-primary" id="btn-processar-foto" onclick="processarFotoEscala()" style="background: linear-gradient(135deg, #059669, #10B981); border: none;">
+                ⚡ Analisar com IA & Extrair Escala
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card de Resultados / Conferência -->
+        <div id="ocr-resultado-card" class="ocr-results-box" style="display: none;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 0.5rem;">
+            <h3 style="font-size: 1.1rem; font-weight: 800; color: #38BDF8; display: flex; align-items: center; gap: 0.5rem;">
+              <span>✅</span> Conferência da Escala Identificada pela IA
+            </h3>
+            <span style="font-size: 0.8rem; color: var(--text-muted);">
+              Revise os militares identificados e confirme para atualizar o banco de dados
+            </span>
+          </div>
+
+          <!-- Metadados Extraídos -->
+          <div class="ocr-meta-grid">
+            <div class="ocr-meta-item">
+              <div class="ocr-meta-label">Semana Identificada</div>
+              <div class="ocr-meta-val" id="ocr-res-semana">--ª Semana</div>
+            </div>
+            <div class="ocr-meta-item">
+              <div class="ocr-meta-label">Período da Escala</div>
+              <div class="ocr-meta-val" id="ocr-res-periodo">--</div>
+            </div>
+            <div class="ocr-meta-item">
+              <div class="ocr-meta-label">Data Início (Quinta)</div>
+              <div class="ocr-meta-val" id="ocr-res-inicio">--</div>
+            </div>
+            <div class="ocr-meta-item">
+              <div class="ocr-meta-label">Data Término (Quarta)</div>
+              <div class="ocr-meta-val" id="ocr-res-fim">--</div>
+            </div>
+          </div>
+
+          <div class="info-alert" style="margin-bottom: 1.25rem;">
+            ⚖️ <strong>Regra de Ouro Aplicada:</strong> Os militares marcados como <em>Titular Impresso</em> terão suas folgas zeradas na respectiva escala (Preta/Vermelha). Militares manuscritos a caneta são registrados como prestadores do serviço, sem perder seu lugar na fila de folga oficial.
+          </div>
+
+          <!-- Tabela de Conferência dos 7 Dias -->
+          <div class="table-container" style="margin-bottom: 1.5rem;">
+            <table class="data-table" id="tabela-ocr-conferencia">
+              <thead>
+                <tr>
+                  <th>Data / Dia</th>
+                  <th>Tipo</th>
+                  <th>Militar Impresso Oficial (Titular)</th>
+                  <th>Troca a Caneta? (Substituto)</th>
+                  <th>Status IA</th>
+                </tr>
+              </thead>
+              <tbody id="tbody-ocr-dias">
+                <!-- Dias preenchidos via JS -->
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Ações de Confirmação -->
+          <div style="display: flex; justify-content: flex-end; gap: 1rem; align-items: center;">
+            <button class="btn btn-secondary" onclick="cancelarReconhecimento()">Descartar</button>
+            <button class="btn btn-primary" onclick="confirmarImportacaoOcr()" style="background: linear-gradient(135deg, #2563EB, #1D4ED8); border: none; font-size: 0.95rem; padding: 0.75rem 1.5rem;">
+              💾 Confirmar Escala & Atualizar Folgas
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- MODAL DE TROCA A CANETA (PERMUTA) -->
+  <div id="modal-troca" class="modal-overlay" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>Registrar Troca a Caneta</h3>
+        <button class="modal-close-btn" onclick="fecharModalTroca()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="info-alert">
+          ⚖️ <strong>Regra Militar de Negócio:</strong> O militar que assume na caneta cobre o posto no dia, mas a folga oficial no rodízio de escalas continua contando para o militar impresso.
+        </div>
+
+        <div class="form-group">
+          <label>Dia do Serviço:</label>
+          <div id="modal-troca-dia-info" style="font-weight: 700; color: var(--text-primary);">--</div>
+        </div>
+
+        <div class="form-group">
+          <label>Militar Impresso Oficial (Titular):</label>
+          <div id="modal-troca-titular-nome" style="font-size: 1.05rem; font-weight: 800; color: #F87171;">--</div>
+        </div>
+
+        <div class="form-group">
+          <label for="modal-troca-substituto">Militar Substituto (Assumiu na Caneta):</label>
+          <select id="modal-troca-substituto" class="form-control">
+            <option value="">Selecione o substituto...</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="modal-troca-motivo">Motivo / Autorização:</label>
+          <input type="text" id="modal-troca-motivo" class="form-control" placeholder="Ex: Permuta particular, DIEx nº...">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="fecharModalTroca()">Cancelar</button>
+        <button class="btn btn-primary" onclick="confirmarTroca()">Confirmar Troca</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL DE PREVISÃO DE NOVA SEMANA -->
+  <div id="modal-previsao" class="modal-overlay" role="dialog" aria-modal="true">
+    <div class="modal-card" style="max-width: 680px;">
+      <div class="modal-header">
+        <h3>Motor Preditivo &bull; Gerar Escala Semanal</h3>
+        <button class="modal-close-btn" onclick="fecharModalPrevisao()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div class="form-group">
+            <label for="prev-semana-num">Nº da Semana:</label>
+            <input type="number" id="prev-semana-num" class="form-control" value="43">
+          </div>
+          <div class="form-group">
+            <label for="prev-data-inicio">Data Início (Quinta-feira):</label>
+            <input type="date" id="prev-data-inicio" class="form-control">
+          </div>
+        </div>
+
+        <button class="btn btn-secondary" style="width: 100%; margin-bottom: 1.25rem;" onclick="calcularPrevisao()">
+          🔍 Simular Algoritmo de Folgas
+        </button>
+
+        <!-- Preview da Previsão Calculada -->
+        <div id="previsao-preview-container" style="display: none;">
+          <h4 style="font-size: 0.85rem; font-weight: 700; color: var(--emerald-main); text-transform: uppercase; margin-bottom: 0.5rem;">
+            Resultado da Simulação Matemática (7 Dias):
+          </h4>
+          <div class="table-container" style="max-height: 240px; overflow-y: auto;">
+            <table class="data-table" style="font-size: 0.82rem;">
+              <thead>
+                <tr>
+                  <th>Data / Dia</th>
+                  <th>Escala</th>
+                  <th>Militar Escolhido</th>
+                  <th>Folga na Fila</th>
+                  <th>Observação</th>
+                </tr>
+              </thead>
+              <tbody id="tbody-preview-previsao">
+                <!-- Linhas calculadas -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="fecharModalPrevisao()">Fechar</button>
+        <button id="btn-salvar-previsao" class="btn btn-primary" style="display: none;" onclick="salvarPrevisao()">
+          💾 Aprovar e Salvar na Escala
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast-notification">Notificação</div>
+
+  <!-- Global Loader -->
+  <div id="global-loader" class="loader-overlay">
+    <span>Carregando dados da escala militar...</span>
+  </div>
+
+  <script src="/static/js/app.js"></script>
+</body>
+</html>

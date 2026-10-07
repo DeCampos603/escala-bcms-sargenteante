@@ -1,0 +1,19 @@
+[
+  {"data": "2026-01-01", "descricao": "Confraternização Universal", "tipo": "NACIONAL"},
+  {"data": "2026-02-16", "descricao": "Carnaval (Segunda-feira)", "tipo": "PONTO_FACULTATIVO"},
+  {"data": "2026-02-17", "descricao": "Carnaval (Terça-feira)", "tipo": "PONTO_FACULTATIVO"},
+  {"data": "2026-02-18", "descricao": "Quarta-feira de Cinzas", "tipo": "PONTO_FACULTATIVO"},
+  {"data": "2026-04-03", "descricao": "Sexta-feira Santa", "tipo": "NACIONAL"},
+  {"data": "2026-04-19", "descricao": "Dia do Exército", "tipo": "MILITAR"},
+  {"data": "2026-04-21", "descricao": "Tiradentes", "tipo": "NACIONAL"},
+  {"data": "2026-05-01", "descricao": "Dia do Trabalho", "tipo": "NACIONAL"},
+  {"data": "2026-06-04", "descricao": "Corpus Christi", "tipo": "PONTO_FACULTATIVO"},
+  {"data": "2026-08-25", "descricao": "Dia do Soldado", "tipo": "MILITAR"},
+  {"data": "2026-09-07", "descricao": "Independência do Brasil", "tipo": "NACIONAL"},
+  {"data": "2026-10-12", "descricao": "Nossa Senhora Aparecida (Padroeira do Brasil)", "tipo": "NACIONAL"},
+  {"data": "2026-10-28", "descricao": "Dia do Servidor Público", "tipo": "PONTO_FACULTATIVO"},
+  {"data": "2026-11-02", "descricao": "Finados", "tipo": "NACIONAL"},
+  {"data": "2026-11-15", "descricao": "Proclamação da República", "tipo": "NACIONAL"},
+  {"data": "2026-11-20", "descricao": "Dia Nacional de Zumbi e da Consciência Negra", "tipo": "NACIONAL"},
+  {"data": "2026-12-25", "descricao": "Natal", "tipo": "NACIONAL"}
+]

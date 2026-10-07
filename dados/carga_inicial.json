@@ -1,0 +1,628 @@
+{
+  "postos": [
+    {
+      "codigo": "SGT_DE_DIA",
+      "nome": "Sargento de Dia",
+      "posto_graduacao_requerido": "3º Sgt",
+      "ordem_exibicao": 1
+    },
+    {
+      "codigo": "CMT_GDA",
+      "nome": "Comandante da Guarda",
+      "posto_graduacao_requerido": "3º Sgt",
+      "ordem_exibicao": 2
+    },
+    {
+      "codigo": "ADJ_OF_DIA",
+      "nome": "Adjunto ao Oficial de Dia",
+      "posto_graduacao_requerido": "1º/2º Sgt",
+      "ordem_exibicao": 3
+    },
+    {
+      "codigo": "OF_DIA",
+      "nome": "Oficial de Dia",
+      "posto_graduacao_requerido": "Tenente",
+      "ordem_exibicao": 4
+    }
+  ],
+  "militares": [
+    {
+      "posto_graduacao": "3º Sgt",
+      "nome_guerra": "DIEGO LIMA",
+      "antiguidade_ordem": 1,
+      "escala_habilitada": "SGT_DE_DIA"
+    },
+    {
+      "posto_graduacao": "3º Sgt",
+      "nome_guerra": "BARRETO",
+      "antiguidade_ordem": 2,
+      "escala_habilitada": "SGT_DE_DIA"
+    },
+    {
+      "posto_graduacao": "3º Sgt",
+      "nome_guerra": "DE CAMPOS",
+      "antiguidade_ordem": 3,
+      "escala_habilitada": "SGT_DE_DIA"
+    },
+    {
+      "posto_graduacao": "3º Sgt",
+      "nome_guerra": "FREITAS LOPES",
+      "antiguidade_ordem": 4,
+      "escala_habilitada": "SGT_DE_DIA"
+    },
+    {
+      "posto_graduacao": "3º Sgt",
+      "nome_guerra": "FONSECA",
+      "antiguidade_ordem": 5,
+      "escala_habilitada": "SGT_DE_DIA"
+    },
+    {
+      "posto_graduacao": "3º Sgt",
+      "nome_guerra": "PASSOS",
+      "antiguidade_ordem": 6,
+      "escala_habilitada": "SGT_DE_DIA"
+    },
+    {
+      "posto_graduacao": "3º Sgt",
+      "nome_guerra": "MELLO",
+      "antiguidade_ordem": 7,
+      "escala_habilitada": "SGT_DE_DIA"
+    },
+    {
+      "posto_graduacao": "3º Sgt",
+      "nome_guerra": "BRENO SANTOS",
+      "antiguidade_ordem": 8,
+      "escala_habilitada": "SGT_DE_DIA"
+    },
+    {
+      "posto_graduacao": "3º Sgt",
+      "nome_guerra": "LEONARDO ROCHA",
+      "antiguidade_ordem": 9,
+      "escala_habilitada": "SGT_DE_DIA"
+    },
+    {
+      "posto_graduacao": "3º Sgt",
+      "nome_guerra": "ANDRESSA",
+      "antiguidade_ordem": 10,
+      "escala_habilitada": "SGT_DE_DIA"
+    },
+    {
+      "posto_graduacao": "3º Sgt",
+      "nome_guerra": "ISADORA",
+      "antiguidade_ordem": 11,
+      "escala_habilitada": "SGT_DE_DIA"
+    },
+    {
+      "posto_graduacao": "3º Sgt",
+      "nome_guerra": "REIS",
+      "antiguidade_ordem": 12,
+      "escala_habilitada": "SGT_DE_DIA"
+    },
+    {
+      "posto_graduacao": "3º Sgt",
+      "nome_guerra": "LUCAS FRANCO",
+      "antiguidade_ordem": 13,
+      "escala_habilitada": "SGT_DE_DIA"
+    },
+    {
+      "posto_graduacao": "3º Sgt",
+      "nome_guerra": "CISNE",
+      "antiguidade_ordem": 14,
+      "escala_habilitada": "SGT_DE_DIA"
+    },
+    {
+      "posto_graduacao": "3º Sgt",
+      "nome_guerra": "MALHEIRO",
+      "antiguidade_ordem": 15,
+      "escala_habilitada": "SGT_DE_DIA"
+    },
+    {
+      "posto_graduacao": "3º Sgt",
+      "nome_guerra": "MONTEIRO",
+      "antiguidade_ordem": 16,
+      "escala_habilitada": "SGT_DE_DIA"
+    },
+    {
+      "posto_graduacao": "3º Sgt",
+      "nome_guerra": "TORRES",
+      "antiguidade_ordem": 17,
+      "escala_habilitada": "SGT_DE_DIA"
+    },
+    {
+      "posto_graduacao": "3º Sgt",
+      "nome_guerra": "VIANA",
+      "antiguidade_ordem": 18,
+      "escala_habilitada": "SGT_DE_DIA"
+    },
+    {
+      "posto_graduacao": "3º Sgt",
+      "nome_guerra": "FREIRE",
+      "antiguidade_ordem": 19,
+      "escala_habilitada": "SGT_DE_DIA"
+    },
+    {
+      "posto_graduacao": "3º Sgt",
+      "nome_guerra": "GABRIELY",
+      "antiguidade_ordem": 20,
+      "escala_habilitada": "SGT_DE_DIA"
+    },
+    {
+      "posto_graduacao": "3º Sgt",
+      "nome_guerra": "SULAMITA",
+      "antiguidade_ordem": 21,
+      "escala_habilitada": "SGT_DE_DIA"
+    },
+    {
+      "posto_graduacao": "3º Sgt",
+      "nome_guerra": "HELOYN",
+      "antiguidade_ordem": 22,
+      "escala_habilitada": "SGT_DE_DIA"
+    },
+    {
+      "posto_graduacao": "3º Sgt",
+      "nome_guerra": "RENATA",
+      "antiguidade_ordem": 23,
+      "escala_habilitada": "SGT_DE_DIA"
+    },
+    {
+      "posto_graduacao": "3º Sgt",
+      "nome_guerra": "SOUSA MOURA",
+      "antiguidade_ordem": 24,
+      "escala_habilitada": "SGT_DE_DIA"
+    },
+    {
+      "posto_graduacao": "3º Sgt",
+      "nome_guerra": "VITOR SOARES",
+      "antiguidade_ordem": 25,
+      "escala_habilitada": "SGT_DE_DIA"
+    },
+    {
+      "posto_graduacao": "3º Sgt",
+      "nome_guerra": "BARAUNA",
+      "antiguidade_ordem": 26,
+      "escala_habilitada": "SGT_DE_DIA"
+    },
+    {
+      "posto_graduacao": "3º Sgt",
+      "nome_guerra": "SCHWEGER",
+      "antiguidade_ordem": 27,
+      "escala_habilitada": "SGT_DE_DIA"
+    },
+    {
+      "posto_graduacao": "3º Sgt",
+      "nome_guerra": "PONCIANO",
+      "antiguidade_ordem": 28,
+      "escala_habilitada": "SGT_DE_DIA"
+    }
+  ],
+  "historico_escalas": [
+    {
+      "data": "2026-09-10",
+      "dia_semana": "QUI",
+      "semana_ano": 37,
+      "tipo_escala": "PRETA",
+      "posto_codigo": "SGT_DE_DIA",
+      "militar_impresso": "DIEGO LIMA",
+      "militar_caneta": "ANDRESSA",
+      "status": "EXECUTADO",
+      "motivo_troca": "Permuta operacional"
+    },
+    {
+      "data": "2026-09-11",
+      "dia_semana": "SEX",
+      "semana_ano": 37,
+      "tipo_escala": "PRETA",
+      "posto_codigo": "SGT_DE_DIA",
+      "militar_impresso": "BARRETO",
+      "militar_caneta": null,
+      "status": "EXECUTADO"
+    },
+    {
+      "data": "2026-09-12",
+      "dia_semana": "SAB",
+      "semana_ano": 37,
+      "tipo_escala": "VERMELHA",
+      "posto_codigo": "SGT_DE_DIA",
+      "militar_impresso": "FREITAS LOPES",
+      "militar_caneta": null,
+      "status": "EXECUTADO"
+    },
+    {
+      "data": "2026-09-13",
+      "dia_semana": "DOM",
+      "semana_ano": 37,
+      "tipo_escala": "VERMELHA",
+      "posto_codigo": "SGT_DE_DIA",
+      "militar_impresso": "VITOR SOARES",
+      "militar_caneta": "HELOYN",
+      "status": "EXECUTADO",
+      "motivo_troca": "Troca autorizada"
+    },
+    {
+      "data": "2026-09-14",
+      "dia_semana": "SEG",
+      "semana_ano": 37,
+      "tipo_escala": "PRETA",
+      "posto_codigo": "SGT_DE_DIA",
+      "militar_impresso": "DE CAMPOS",
+      "militar_caneta": null,
+      "status": "EXECUTADO"
+    },
+    {
+      "data": "2026-09-15",
+      "dia_semana": "TER",
+      "semana_ano": 37,
+      "tipo_escala": "PRETA",
+      "posto_codigo": "SGT_DE_DIA",
+      "militar_impresso": "FREITAS LOPES",
+      "militar_caneta": null,
+      "status": "EXECUTADO"
+    },
+    {
+      "data": "2026-09-16",
+      "dia_semana": "QUA",
+      "semana_ano": 37,
+      "tipo_escala": "PRETA",
+      "posto_codigo": "SGT_DE_DIA",
+      "militar_impresso": "FONSECA",
+      "militar_caneta": null,
+      "status": "EXECUTADO"
+    },
+    {
+      "data": "2026-09-17",
+      "dia_semana": "QUI",
+      "semana_ano": 38,
+      "tipo_escala": "PRETA",
+      "posto_codigo": "SGT_DE_DIA",
+      "militar_impresso": "PASSOS",
+      "militar_caneta": null,
+      "status": "EXECUTADO"
+    },
+    {
+      "data": "2026-09-18",
+      "dia_semana": "SEX",
+      "semana_ano": 38,
+      "tipo_escala": "PRETA",
+      "posto_codigo": "SGT_DE_DIA",
+      "militar_impresso": "MELLO",
+      "militar_caneta": null,
+      "status": "EXECUTADO"
+    },
+    {
+      "data": "2026-09-19",
+      "dia_semana": "SAB",
+      "semana_ano": 38,
+      "tipo_escala": "VERMELHA",
+      "posto_codigo": "SGT_DE_DIA",
+      "militar_impresso": "SULAMITA",
+      "militar_caneta": "RENATA",
+      "status": "EXECUTADO",
+      "motivo_troca": "Permuta de fim de semana"
+    },
+    {
+      "data": "2026-09-20",
+      "dia_semana": "DOM",
+      "semana_ano": 38,
+      "tipo_escala": "VERMELHA",
+      "posto_codigo": "SGT_DE_DIA",
+      "militar_impresso": "RENATA",
+      "militar_caneta": "BARRETO",
+      "status": "EXECUTADO",
+      "motivo_troca": "Permuta autorizada"
+    },
+    {
+      "data": "2026-09-21",
+      "dia_semana": "SEG",
+      "semana_ano": 38,
+      "tipo_escala": "PRETA",
+      "posto_codigo": "SGT_DE_DIA",
+      "militar_impresso": "BRENO SANTOS",
+      "militar_caneta": null,
+      "status": "EXECUTADO"
+    },
+    {
+      "data": "2026-09-22",
+      "dia_semana": "TER",
+      "semana_ano": 38,
+      "tipo_escala": "PRETA",
+      "posto_codigo": "SGT_DE_DIA",
+      "militar_impresso": "LEONARDO ROCHA",
+      "militar_caneta": null,
+      "status": "EXECUTADO"
+    },
+    {
+      "data": "2026-09-23",
+      "dia_semana": "QUA",
+      "semana_ano": 38,
+      "tipo_escala": "PRETA",
+      "posto_codigo": "SGT_DE_DIA",
+      "militar_impresso": "ANDRESSA",
+      "militar_caneta": null,
+      "status": "EXECUTADO"
+    },
+    {
+      "data": "2026-09-24",
+      "dia_semana": "QUI",
+      "semana_ano": 39,
+      "tipo_escala": "PRETA",
+      "posto_codigo": "SGT_DE_DIA",
+      "militar_impresso": "ISADORA",
+      "militar_caneta": null,
+      "status": "EXECUTADO"
+    },
+    {
+      "data": "2026-09-25",
+      "dia_semana": "SEX",
+      "semana_ano": 39,
+      "tipo_escala": "PRETA",
+      "posto_codigo": "SGT_DE_DIA",
+      "militar_impresso": "ANDRESSA",
+      "militar_caneta": null,
+      "status": "EXECUTADO"
+    },
+    {
+      "data": "2026-09-26",
+      "dia_semana": "SAB",
+      "semana_ano": 39,
+      "tipo_escala": "VERMELHA",
+      "posto_codigo": "SGT_DE_DIA",
+      "militar_impresso": "SULAMITA",
+      "militar_caneta": null,
+      "status": "EXECUTADO"
+    },
+    {
+      "data": "2026-09-27",
+      "dia_semana": "DOM",
+      "semana_ano": 39,
+      "tipo_escala": "VERMELHA",
+      "posto_codigo": "SGT_DE_DIA",
+      "militar_impresso": "HELOYN",
+      "militar_caneta": null,
+      "status": "EXECUTADO"
+    },
+    {
+      "data": "2026-09-28",
+      "dia_semana": "SEG",
+      "semana_ano": 39,
+      "tipo_escala": "PRETA",
+      "posto_codigo": "SGT_DE_DIA",
+      "militar_impresso": "LUCAS FRANCO",
+      "militar_caneta": null,
+      "status": "EXECUTADO"
+    },
+    {
+      "data": "2026-09-29",
+      "dia_semana": "TER",
+      "semana_ano": 39,
+      "tipo_escala": "PRETA",
+      "posto_codigo": "SGT_DE_DIA",
+      "militar_impresso": "CISNE",
+      "militar_caneta": null,
+      "status": "EXECUTADO"
+    },
+    {
+      "data": "2026-09-30",
+      "dia_semana": "QUA",
+      "semana_ano": 39,
+      "tipo_escala": "PRETA",
+      "posto_codigo": "SGT_DE_DIA",
+      "militar_impresso": "MALHEIRO",
+      "militar_caneta": null,
+      "status": "EXECUTADO"
+    },
+    {
+      "data": "2026-10-01",
+      "dia_semana": "QUI",
+      "semana_ano": 40,
+      "tipo_escala": "PRETA",
+      "posto_codigo": "SGT_DE_DIA",
+      "militar_impresso": "MONTEIRO",
+      "militar_caneta": null,
+      "status": "EXECUTADO"
+    },
+    {
+      "data": "2026-10-02",
+      "dia_semana": "SEX",
+      "semana_ano": 40,
+      "tipo_escala": "PRETA",
+      "posto_codigo": "SGT_DE_DIA",
+      "militar_impresso": "TORRES",
+      "militar_caneta": null,
+      "status": "EXECUTADO"
+    },
+    {
+      "data": "2026-10-03",
+      "dia_semana": "SAB",
+      "semana_ano": 40,
+      "tipo_escala": "VERMELHA",
+      "posto_codigo": "SGT_DE_DIA",
+      "militar_impresso": "LUCAS FRANCO",
+      "militar_caneta": "ANDRESSA",
+      "status": "EXECUTADO",
+      "motivo_troca": "Permuta operacional"
+    },
+    {
+      "data": "2026-10-04",
+      "dia_semana": "DOM",
+      "semana_ano": 40,
+      "tipo_escala": "VERMELHA",
+      "posto_codigo": "SGT_DE_DIA",
+      "militar_impresso": "MONTEIRO",
+      "militar_caneta": null,
+      "status": "EXECUTADO"
+    },
+    {
+      "data": "2026-10-05",
+      "dia_semana": "SEG",
+      "semana_ano": 40,
+      "tipo_escala": "PRETA",
+      "posto_codigo": "SGT_DE_DIA",
+      "militar_impresso": "VIANA",
+      "militar_caneta": null,
+      "status": "EXECUTADO"
+    },
+    {
+      "data": "2026-10-06",
+      "dia_semana": "TER",
+      "semana_ano": 40,
+      "tipo_escala": "PRETA",
+      "posto_codigo": "SGT_DE_DIA",
+      "militar_impresso": "FREIRE",
+      "militar_caneta": null,
+      "status": "EXECUTADO"
+    },
+    {
+      "data": "2026-10-07",
+      "dia_semana": "QUA",
+      "semana_ano": 40,
+      "tipo_escala": "PRETA",
+      "posto_codigo": "SGT_DE_DIA",
+      "militar_impresso": "GABRIELY",
+      "militar_caneta": null,
+      "status": "EXECUTADO"
+    },
+    {
+      "data": "2026-10-08",
+      "dia_semana": "QUI",
+      "semana_ano": 41,
+      "tipo_escala": "PRETA",
+      "posto_codigo": "SGT_DE_DIA",
+      "militar_impresso": "SULAMITA",
+      "militar_caneta": null,
+      "status": "EXECUTADO"
+    },
+    {
+      "data": "2026-10-09",
+      "dia_semana": "SEX",
+      "semana_ano": 41,
+      "tipo_escala": "PRETA",
+      "posto_codigo": "SGT_DE_DIA",
+      "militar_impresso": "HELOYN",
+      "militar_caneta": null,
+      "status": "EXECUTADO"
+    },
+    {
+      "data": "2026-10-10",
+      "dia_semana": "SAB",
+      "semana_ano": 41,
+      "tipo_escala": "VERMELHA",
+      "posto_codigo": "SGT_DE_DIA",
+      "militar_impresso": "BARAUNA",
+      "militar_caneta": "ANDRESSA",
+      "status": "EXECUTADO",
+      "motivo_troca": "Permuta operacional (Foto oficial)"
+    },
+    {
+      "data": "2026-10-11",
+      "dia_semana": "DOM",
+      "semana_ano": 41,
+      "tipo_escala": "VERMELHA",
+      "posto_codigo": "SGT_DE_DIA",
+      "militar_impresso": "SOUSA MOURA",
+      "militar_caneta": "DE CAMPOS",
+      "status": "EXECUTADO",
+      "motivo_troca": "Permuta autorizada (Foto oficial)"
+    },
+    {
+      "data": "2026-10-12",
+      "dia_semana": "SEG",
+      "semana_ano": 41,
+      "tipo_escala": "VERMELHA",
+      "posto_codigo": "SGT_DE_DIA",
+      "militar_impresso": "HELOYN",
+      "militar_caneta": null,
+      "status": "EXECUTADO",
+      "observacoes": "Feriado N. Sra. Aparecida"
+    },
+    {
+      "data": "2026-10-13",
+      "dia_semana": "TER",
+      "semana_ano": 41,
+      "tipo_escala": "PRETA",
+      "posto_codigo": "SGT_DE_DIA",
+      "militar_impresso": "RENATA",
+      "militar_caneta": null,
+      "status": "EXECUTADO"
+    },
+    {
+      "data": "2026-10-14",
+      "dia_semana": "QUA",
+      "semana_ano": 41,
+      "tipo_escala": "PRETA",
+      "posto_codigo": "SGT_DE_DIA",
+      "militar_impresso": "SOUSA MOURA",
+      "militar_caneta": null,
+      "status": "EXECUTADO"
+    },
+    {
+      "data": "2026-10-15",
+      "dia_semana": "QUI",
+      "semana_ano": 42,
+      "tipo_escala": "PRETA",
+      "posto_codigo": "SGT_DE_DIA",
+      "militar_impresso": "SCHWEGER",
+      "militar_caneta": null,
+      "status": "PUBLICADO"
+    },
+    {
+      "data": "2026-10-16",
+      "dia_semana": "SEX",
+      "semana_ano": 42,
+      "tipo_escala": "PRETA",
+      "posto_codigo": "SGT_DE_DIA",
+      "militar_impresso": "BARAUNA",
+      "militar_caneta": null,
+      "status": "PUBLICADO"
+    },
+    {
+      "data": "2026-10-17",
+      "dia_semana": "SAB",
+      "semana_ano": 42,
+      "tipo_escala": "VERMELHA",
+      "posto_codigo": "SGT_DE_DIA",
+      "militar_impresso": "VIANA",
+      "militar_caneta": null,
+      "status": "PUBLICADO"
+    },
+    {
+      "data": "2026-10-18",
+      "dia_semana": "DOM",
+      "semana_ano": 42,
+      "tipo_escala": "VERMELHA",
+      "posto_codigo": "SGT_DE_DIA",
+      "militar_impresso": "SCHWEGER",
+      "militar_caneta": null,
+      "status": "PUBLICADO"
+    },
+    {
+      "data": "2026-10-19",
+      "dia_semana": "SEG",
+      "semana_ano": 42,
+      "tipo_escala": "PRETA",
+      "posto_codigo": "SGT_DE_DIA",
+      "militar_impresso": "VITOR SOARES",
+      "militar_caneta": null,
+      "status": "PUBLICADO"
+    },
+    {
+      "data": "2026-10-20",
+      "dia_semana": "TER",
+      "semana_ano": 42,
+      "tipo_escala": "PRETA",
+      "posto_codigo": "SGT_DE_DIA",
+      "militar_impresso": "DIEGO LIMA",
+      "militar_caneta": null,
+      "status": "PUBLICADO"
+    },
+    {
+      "data": "2026-10-21",
+      "dia_semana": "QUA",
+      "semana_ano": 42,
+      "tipo_escala": "PRETA",
+      "posto_codigo": "SGT_DE_DIA",
+      "militar_impresso": "PONCIANO",
+      "militar_caneta": null,
+      "status": "PUBLICADO"
+    }
+  ]
+}
