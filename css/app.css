@@ -1059,4 +1059,87 @@ tr.draggable-row.drop-target-below {
   margin-bottom: 1rem;
 }
 
+/* ==========================================================================
+   RESPONSIVIDADE MOBILE & DISPOSITIVOS TÁTEIS (WCAG 2.2)
+   ========================================================================== */
+@media (max-width: 768px) {
+  .top-header {
+    padding: 0.75rem 1rem;
+  }
+  .header-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+  .header-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .nav-tabs {
+    padding: 0 0.5rem;
+    gap: 0.25rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .tab-btn {
+    padding: 0.75rem 0.85rem;
+    font-size: 0.8rem;
+  }
+  .main-content {
+    padding: 1rem 0.75rem;
+  }
+  .kpi-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+  .week-control-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+  .week-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+  /* Grade da escala semanal */
+  .scale-sheet {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: var(--radius-md);
+  }
+  .scale-grid {
+    min-width: 700px;
+  }
+  .modal-container {
+    width: 95%;
+    max-height: 90vh;
+    padding: 1.25rem;
+  }
+  .form-row {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .form-group {
+    width: 100%;
+  }
+  input, select, textarea {
+    font-size: 16px !important; /* Previne auto-zoom iOS */
+    min-height: 44px;
+  }
+}
+
+@media (max-width: 480px) {
+  .kpi-grid {
+    grid-template-columns: 1fr;
+  }
+  .brand-sub {
+    display: none;
+  }
+  .btn-tactical {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+
 
