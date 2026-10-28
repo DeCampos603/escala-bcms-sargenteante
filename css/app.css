@@ -176,6 +176,31 @@ body {
 /* ==========================================================================
    NAVEGAÇÃO POR ABAS (TABS)
    ========================================================================== */
+.tabs, .nav, .toptabs, .nav-tabs, .week-selector-group {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.tabs::-webkit-scrollbar,
+.nav::-webkit-scrollbar,
+.toptabs::-webkit-scrollbar,
+.nav-tabs::-webkit-scrollbar,
+.week-selector-group::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+@media (min-width: 1025px) {
+  .top-header,
+  .header-actions {
+    flex-wrap: nowrap !important;
+  }
+  .header-actions {
+    flex-shrink: 0;
+  }
+  .header-actions .btn {
+    white-space: nowrap;
+  }
+}
 .nav-tabs {
   background: var(--bg-surface);
   border-bottom: 1px solid var(--border-subtle);
@@ -547,6 +572,10 @@ body {
   margin-bottom: 2rem;
 }
 
+.data-table td, .data-table th, td.num, th.num, .rest-badge, .antiguidade-badge, .day-date, .kpi-value, .ocr-meta-val {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}
 .data-table {
   width: 100%;
   border-collapse: collapse;

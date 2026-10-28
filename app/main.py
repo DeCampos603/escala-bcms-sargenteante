@@ -306,8 +306,33 @@ def delete_militar(militar_id: int):
 
 # --- Servir Frontend Estático ---
 STATIC_DIR = PROJETO_DIR / "static"
+CSS_DIR = PROJETO_DIR / "css"
+JS_DIR = PROJETO_DIR / "js"
+
+if CSS_DIR.exists():
+    app.mount("/css", StaticFiles(directory=str(CSS_DIR)), name="css")
+    app.mount("/static/css", StaticFiles(directory=str(CSS_DIR)), name="static_css")
+if JS_DIR.exists():
+    app.mount("/js", StaticFiles(directory=str(JS_DIR)), name="js")
+
+
+@app.get("/brasao.svg")
+@app.get("/static/brasao.svg")
+def read_brasao():
+    """Entrega o brasão oficial único do módulo."""
+    return FileResponse(str(PROJETO_DIR / "brasao.svg"), media_type="image/svg+xml")
+
+
+@app.get("/dados_apresentacao.json")
+@app.get("/static/dados_apresentacao.json")
+def read_dados_apresentacao():
+    """Entrega a base estática de apresentação."""
+    return FileResponse(str(PROJETO_DIR / "dados_apresentacao.json"), media_type="application/json")
+
+
 if STATIC_DIR.exists():
     app.mount("/static", StaticFiles(directory=str(STATIC_DIR)), name="static")
+
 
 @app.get("/")
 def read_index():
@@ -315,12 +340,13 @@ def read_index():
     index_path = STATIC_DIR / "index.html"
     if index_path.exists():
         return FileResponse(str(index_path))
-    return {"mensagem": "EscalaPro BCMS API ativa."}
+    return FileResponse(str(PROJETO_DIR / "index.html"))
+
 
 @app.get("/sargenteante")
 def read_sargenteante():
     """Entrega o portal operacional paralelo para apresentação e uso pelo Sargenteante."""
-    sarg_path = STATIC_DIR / "sargenteante.html"
-    if sarg_path.exists():
-        return FileResponse(str(sarg_path))
+    sarg_root = PROJETO_DIR / "index.html"
+    if sarg_root.exists():
+        return FileResponse(str(sarg_root))
     return FileResponse(str(STATIC_DIR / "index.html"))
